@@ -4,6 +4,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import config.Credentials;
 import helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Tag;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationFormData;
 import pages.RegistrationFormPage;
@@ -20,6 +21,11 @@ public class TestWithPageObject {
 
     @BeforeAll
     static void setUpConfig() {
+        String login = Credentials.credentials.login();
+        String pass = Credentials.credentials.password();
+        String server = readProperty();
+        //Configuration.remote = "https://"+login+":"+pass+"@"+server+"/wd/hub/";
+        Configuration.remote = String.format("https://%s:%s@%s/wd/hub/",login,pass,server);
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
@@ -31,11 +37,7 @@ public class TestWithPageObject {
 
         Configuration.browserCapabilities = capabilities;
 
-        String server = readProperty();
-        String login = Credentials.credentials.login();
-        String pass = Credentials.credentials.password();
 
-        Configuration.remote = "https://"+login+":"+pass+"@"+server+"/wd/hub/";
 
     }
 
@@ -48,6 +50,12 @@ public class TestWithPageObject {
         registrationFormPage.checkForm(registrationFormData);
 
     }
+//    @Test
+//    @Tag("serv")
+//    void readProp() {
+//        String prop = System.getProperty("server");
+//        System.out.println(prop);
+//    }
 
     @AfterEach
     void closeBrowser() {
