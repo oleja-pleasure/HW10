@@ -25,7 +25,7 @@ public class TestWithPageObject {
         String pass = Credentials.credentials.password();
         String server = readProperty();
         //Configuration.remote = "https://"+login+":"+pass+"@"+server+"/wd/hub/";
-        Configuration.remote = String.format("https://%s:%s@%s/wd/hub/",login,pass,server);
+        Configuration.remote = String.format("https://%s:%s@%s/wd/hub",login,pass,server);
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;

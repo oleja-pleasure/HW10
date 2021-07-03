@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import helpers.Attach;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -25,6 +26,8 @@ public class RegistrationFormPage {
     public void fillForm(RegistrationFormData formData) {
         step("Открытие ссылки", () ->
                 open("https://demoqa.com/automation-practice-form"));
+        step("screen", () ->
+                Attach.screenshotAs("Last screenshot"));
         step("Ввод firstname", () ->
                 firstName.val(formData.fn));
         step("Ввод lastname", () ->
