@@ -22,10 +22,10 @@ public class TestWithPageObject {
     @BeforeAll
     static void setUpConfig() {
         String login = Credentials.credentials.login();
-        String pass = Credentials.credentials.password();
+        String password = Credentials.credentials.password();
         String server = readProperty();
         //Configuration.remote = "https://"+login+":"+pass+"@"+server+"/wd/hub/";
-        Configuration.remote = String.format("https://%s:%s@%s/wd/hub",login,pass,server);
+        Configuration.remote = String.format("https://%s:%s@%s/wd/hub",login,password,server);
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
@@ -50,12 +50,6 @@ public class TestWithPageObject {
         registrationFormPage.checkForm(registrationFormData);
 
     }
-//    @Test
-//    @Tag("serv")
-//    void readProp() {
-//        String prop = System.getProperty("server");
-//        System.out.println(prop);
-//    }
 
     @AfterEach
     void closeBrowser() {

@@ -42,9 +42,3 @@ tasks.withType(Test) {
 test {
     useJUnitPlatform()
 }
-
-task some_run(type: Test){
-    useJUnitPlatform {
-        includeTags 'serv'
-    }
-}

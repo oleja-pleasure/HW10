@@ -12,6 +12,6 @@ public interface CredentialsConfig extends Config {
     @Key("login")
     String login();
 
-    @Key("pass")
+    @Key("password")
     String password();
 }

@@ -3,6 +3,8 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import helpers.Attach;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -24,8 +26,8 @@ public class RegistrationFormPage {
             city = $("#city");
 
     public void fillForm(RegistrationFormData formData) {
-        step("Открытие ссылки", () ->{
-                open("https://demoqa.com/automation-practice-form");
+        step("Открытие ссылки", () -> {
+            open("https://demoqa.com/automation-practice-form");
             Attach.screenshotAs("Last screenshot");
         });
         step("Ввод firstname", () ->
