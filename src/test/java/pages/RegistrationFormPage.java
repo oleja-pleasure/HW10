@@ -26,10 +26,8 @@ public class RegistrationFormPage {
             city = $("#city");
 
     public void fillForm(RegistrationFormData formData) {
-        step("Открытие ссылки", () -> {
-            open("https://demoqa.com/automation-practice-form");
-            Attach.screenshotAs("Last screenshot");
-        });
+        step("Открытие ссылки", () ->
+                open("https://demoqa.com/automation-practice-form"));
         step("Ввод firstname", () ->
                 firstName.val(formData.fn));
         step("Ввод lastname", () ->
